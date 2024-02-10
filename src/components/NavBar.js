@@ -9,10 +9,7 @@ export const NavBar = () => {
       <Container>
         <Navbar.Brand href="#home">
             <img
-                src="/logo.svg"
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
+                src={}
                 alt="Logo"
             />
             </Navbar.Brand>
