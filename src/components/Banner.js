@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap"
 import { ArrowRightCircle } from "react-bootstrap-icons"
 import headerImg from "../assets/img/header-img.svg"
+import "animate.css";
+import TrackVisibility from "react-on-screen";
+
 
 
 export const Banner = () => {
@@ -40,21 +43,32 @@ export const Banner = () => {
             setDelta(500);
         }
     }
+
     return (
         <section className="banner" id="home">
-            <Container>
-                <Row className="align-items-center">
-                    <Col xs={12} md={6} xl={7}>
-                        <span className="tagline">Shift into overdrive</span>
-                        <h1>{`We are `}<span className="wrap">{text}</span></h1>
-                        <p>lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <button onClick={() => console.log('connect')}>Let's connect <ArrowRightCircle size={25} /></button>                   
-                    </Col>
-                    <Col xs={12} md={6} xl={5}>
-                        <img src={headerImg} alt="Header Img" />                       
-                    </Col>
-                </Row>
-            </Container>
+          <Container>
+            <Row className="aligh-items-center">
+              <Col xs={12} md={6} xl={7}>
+                <TrackVisibility>
+                  {({ isVisible }) =>
+                  <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                    <span className="tagline">Shift into Overdrive!</span>
+                    <h1>{`Hi! We're Imala....`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
+                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                      <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                  </div>}
+                </TrackVisibility>
+              </Col>
+              <Col xs={12} md={6} xl={5}>
+                <TrackVisibility>
+                  {({ isVisible }) =>
+                    <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
+                      <img src={headerImg} alt="Header Img"/>
+                    </div>}
+                </TrackVisibility>
+              </Col>
+            </Row>
+          </Container>
         </section>
-    )
-}
+      )
+    }
